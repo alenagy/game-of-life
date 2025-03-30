@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: GameOfLife
+
+  api:
+    build:
+      context: .
+      dockerfile: src/GameOfLife.API/Dockerfile
+    container_name: game_of_life_api
+    depends_on:
+      - mongo
+    environment:
+      - MongoDb__ConnectionString=mongodb://mongo:27017
+      - MongoDb__DatabaseName=GameOfLife
+    ports:
+      - "5050:5000"
+
+volumes:
+  mongo_data:

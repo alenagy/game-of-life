@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": ".NET Core Test Launch",
+        "type": "coreclr",
+        "request": "launch",
+        "program": "dotnet",
+        "args": [
+          "test",
+          "--no-build",
+          "--logger:console;verbosity=detailed"
+        ],
+        "cwd": "${workspaceFolder}/tests/GameOfLife.IntegrationTests",
+        "console": "integratedTerminal",
+        "stopAtEntry": false
+      }
+    ]
+  }
